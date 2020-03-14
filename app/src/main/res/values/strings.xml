@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">BProduct</string>
+    <string name="create_account"><font color="#00ff00">text</font></string>
+    <string name="email">Email</string>
+    <string name="text">Text</string>
+
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="register">Register</string>
+    <string name="back_to_login">Back to Login</string>
+
+    <string name="search">Search Image</string>
+    <string name="PIXABAY_API_KEY">YOUR_API_KEY_HERE</string>
+    <string name="no_internet">Ops, we could not find an active internet connection…</string>
+    <string name="error">Ops, something is not right…</string>
+    <string name="retry">RETRY</string>
+    <string name="no_results">No results for the query :(</string>
+    <string name="like">Like</string>
+    <string name="favorite">Favorite</string>
+    <string name="comments">Comments</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
