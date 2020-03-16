@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Camera"));
         tabLayout.addTab(tabLayout.newTab().setText("Share"));
-        tabLayout.addTab(tabLayout.newTab().setText("Account"));
+        tabLayout.addTab(tabLayout.newTab().setText("Images"));
         tabLayout.setTabGravity(tabLayout.GRAVITY_FILL);
 
 
