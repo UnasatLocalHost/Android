@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "661095913175-3db6belrk3776igagoj0f77jmh5gaum1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "sr.unasat.bproduct",
+            "certificate_hash": "282bdf26c2d82d97edd9dc43bd2817285f8de849"
+          }
+        },
+        {
           "client_id": "661095913175-mj3qieicu72t8v3n2nd01he394smlr6u.apps.googleusercontent.com",
           "client_type": 3
         }
