@@ -35,6 +35,9 @@ dependencies {
     implementation 'com.github.androdocs:Simple-HTTP-Request:v1.0'
     implementation 'com.squareup.picasso:picasso:2.5.2'
     implementation 'androidx.core:core:1.0.0'
+    implementation 'com.google.firebase:firebase-analytics:15.0.0'
+    implementation 'com.google.firebase:firebase-ml-vision:15.0.0'
+    implementation 'com.google.firebase:firebase-core:15.0.2'
 
 
 }
