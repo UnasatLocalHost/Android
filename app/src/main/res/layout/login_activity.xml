@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:id="@+id/scroll_view"
     android:background="@drawable/background1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -72,6 +73,23 @@
             android:layout_marginBottom="16dp"
             android:layout_marginTop="16dp"
             android:gravity="center_horizontal" />
+
+        <TextView
+            android:id="@+id/tvAbout"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:gravity="center_horizontal"
+            android:text="About"
+            android:textColor="@android:color/holo_green_light" />
+
+
+        <FrameLayout
+            android:id="@+id/frameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp" />
 
     </LinearLayout>
 

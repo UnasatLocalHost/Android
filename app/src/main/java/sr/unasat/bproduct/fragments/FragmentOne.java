@@ -10,12 +10,13 @@ import android.os.Build;
 import android.os.Bundle;
 
 
-
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 
 import android.provider.MediaStore;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import android.view.View;
@@ -26,8 +27,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.camerakit.CameraKitView;
-import com.google.android.gms.vision.text.TextRecognizer;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.text.FirebaseVisionText;
+import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
 
 import sr.unasat.bproduct.R;
 
@@ -100,6 +105,9 @@ public class FragmentOne extends Fragment {
 
         }
     }
+
+
+
 
 }
 
