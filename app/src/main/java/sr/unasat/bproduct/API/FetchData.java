@@ -13,8 +13,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import sr.unasat.bproduct.fragments.About;
-
+import sr.unasat.bproduct.Popup;
 
 
 public class FetchData extends AsyncTask<Void,Void,Void> {
@@ -61,7 +60,8 @@ public class FetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        About.textViewAbout.setText(this.dataParsed);
+        //About.textViewAbout.setText(this.dataParsed);
         //LoginActivity.textView.setText(this.dataParsed);
+        Popup.popTextView.setText(dataParsed);
     }
 }

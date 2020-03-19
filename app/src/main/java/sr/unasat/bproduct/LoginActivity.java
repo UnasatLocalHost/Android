@@ -1,7 +1,6 @@
 package sr.unasat.bproduct;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +9,7 @@ import android.text.Spanned;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
@@ -20,7 +17,6 @@ import com.google.android.material.textfield.TextInputLayout;
 import sr.unasat.bproduct.Database.SQliteHelper;
 import sr.unasat.bproduct.Entity.User;
 import sr.unasat.bproduct.afterlogin.MainActivity;
-import sr.unasat.bproduct.fragments.About;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -77,10 +73,11 @@ public class LoginActivity extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                About about = new About();
-                fragmentManager.beginTransaction().replace(R.id.frameLayout,about).commit();
-                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+//                FragmentManager fragmentManager = getSupportFragmentManager();
+//
+//                fragmentManager.beginTransaction().replace(R.id.frameLayout,about).commit();
+//                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(LoginActivity.this,Popup.class));
             }
         });
 
