@@ -36,7 +36,6 @@ import com.google.firebase.ml.vision.text.FirebaseVisionTextDetector;
 import java.util.List;
 
 import sr.unasat.bproduct.R;
-import sr.unasat.bproduct.afterlogin.MainActivity;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -49,6 +48,8 @@ public class FragmentOne extends Fragment {
     private ImageView imageView;
     private TextView textView;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+
+
 
     private static final int CAMERA_REQUEST_CODE = 200;
     private static final int STORAGE_REQUEST_CODE = 400;
@@ -114,8 +115,22 @@ public class FragmentOne extends Fragment {
         if (requestCode == REQUEST_IMAGE_CAPTURE &&
                 resultCode == RESULT_OK) {
             if (data != null && data.getExtras() != null) {
+                ContentValues contentValues = new ContentValues();
+                contentValues.put(MediaStore.Images.Media.TITLE, "New Picture");// title of the picture
+                contentValues.put(MediaStore.Images.Media.DESCRIPTION, "Image to Text");//description
+
+
+
+                image_uri = getActivity().getApplicationContext().getContentResolver().insert(
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues);
+
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
+                startActivityForResult(cameraIntent, IMAGE_PICK_CAMERA_CODE);
+
                 imageBitmap = (Bitmap) data.getExtras().get("data");
                 imageView.setImageBitmap(imageBitmap);
+
             }
         }
 //
@@ -208,8 +223,11 @@ public class FragmentOne extends Fragment {
 
 
     private void dispatchTakePictureIntent() {
+
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
         if (takePictureIntent.resolveActivity(getActivity().getPackageManager()) != null) {
+           // takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, image_uri);
             startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
         }
 
