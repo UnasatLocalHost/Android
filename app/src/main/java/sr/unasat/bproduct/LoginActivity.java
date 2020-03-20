@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import sr.unasat.bproduct.API.FetchData;
 import sr.unasat.bproduct.Database.SQliteHelper;
 import sr.unasat.bproduct.Entity.User;
 import sr.unasat.bproduct.afterlogin.MainActivity;
@@ -41,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.login_activity);
         sQliteHelper = new SQliteHelper(this);
         initCreateAccountTextView();
+
         initViews();
         about = (TextView)findViewById(R.id.tvAbout);
 
@@ -78,6 +80,7 @@ public class LoginActivity extends AppCompatActivity {
 //                fragmentManager.beginTransaction().replace(R.id.frameLayout,about).commit();
 //                Toast.makeText(LoginActivity.this, "", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(LoginActivity.this,Popup.class));
+
             }
         });
 

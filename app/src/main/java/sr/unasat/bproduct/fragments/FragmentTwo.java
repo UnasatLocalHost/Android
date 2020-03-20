@@ -103,6 +103,7 @@ public class FragmentTwo extends Fragment {
                 .setContentText("Your message has been sent")
                 .setPriority(NotificationCompat.PRIORITY_LOW)
 
+
                 .build();
 
         notificationManager.notify(2, notification);
