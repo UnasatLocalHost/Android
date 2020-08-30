@@ -54,7 +54,7 @@ public class FragmentTwo extends Fragment {
                              Bundle savedInstanceState) {
         View fragmentView = inflater.inflate(R.layout.fragment_fragment_two, container, false);
         share_btn = fragmentView.findViewById(R.id.share_btn);
-        logOut = fragmentView.findViewById(R.id.action_settings);
+        logOut = fragmentView.findViewById(R.id.action_log_out);
         notificationManager = NotificationManagerCompat.from(getActivity());
 
 

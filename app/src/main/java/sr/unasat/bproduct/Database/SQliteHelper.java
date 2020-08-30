@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.sql.Date;
+
 import sr.unasat.bproduct.Entity.User;
 
 
@@ -20,6 +22,7 @@ public class SQliteHelper extends SQLiteOpenHelper {
     public static final String USER_USERNAME = "username";
     public static final String USER_EMAIL = "email";
     public static final String USER_PASSWORD = "password";
+    public static final String USER_LAST_LOGIN = "last_login";
 
     //sql query create users table
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_USERS
@@ -28,6 +31,7 @@ public class SQliteHelper extends SQLiteOpenHelper {
             + USER_USERNAME + " TEXT, "
             + USER_EMAIL + " TEXT, "
             + USER_PASSWORD + " TEXT"
+            + USER_LAST_LOGIN +"TEXT"
             + " ) ";
 
     public SQliteHelper(Context context) {
@@ -55,6 +59,7 @@ public class SQliteHelper extends SQLiteOpenHelper {
         values.put(USER_USERNAME,user.username);
         values.put(USER_EMAIL,user.email);
         values.put(USER_PASSWORD,user.password);
+
         // insert row
         long todo_id = db.insert(TABLE_USERS, null, values);
     }
@@ -90,6 +95,26 @@ public class SQliteHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
+    public boolean  updateData(String USERNAME, String EMAIL,String PASSWORD){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(USER_USERNAME,USERNAME);
+        contentValues.put(USER_EMAIL,EMAIL);
+        contentValues.put(USER_PASSWORD,PASSWORD);
+        db.update(TABLE_USERS,contentValues,"username = ?", new String[]{USERNAME});
+        return true;
+    }
+
+
+    public Cursor getAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor res  = db.rawQuery("select * from " +TABLE_USERS,null);
+        return res;
+
+    }
+
 
 
 }

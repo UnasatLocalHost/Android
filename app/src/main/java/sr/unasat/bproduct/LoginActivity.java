@@ -3,6 +3,7 @@ package sr.unasat.bproduct;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
@@ -14,13 +15,18 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 import sr.unasat.bproduct.API.FetchData;
 import sr.unasat.bproduct.Database.SQliteHelper;
 import sr.unasat.bproduct.Entity.User;
 import sr.unasat.bproduct.afterlogin.MainActivity;
 
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity{
 
 
     EditText editTextEmail;
@@ -63,6 +69,10 @@ public class LoginActivity extends AppCompatActivity {
                     if (currentUser != null) {
                         Snackbar.make(buttonLogin, "Successful logged In", Snackbar.LENGTH_LONG).show();
                         LoadMainActivity();
+                        //Asynce here
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
+                        Date date = Calendar.getInstance().getTime();
+
 
 
                     } else {
@@ -156,6 +166,21 @@ public class LoginActivity extends AppCompatActivity {
        Intent intent= new Intent(this, MainActivity.class);
        startActivity(intent);
     }
+private abstract class Time extends  AsyncTask {
 
+
+
+
+    @Override
+    protected void onPreExecute() {
+
+        Date currentTime = Calendar.getInstance().getTime();
+
+
+        super.onPreExecute();
+    }
+}
 
 }
+
+

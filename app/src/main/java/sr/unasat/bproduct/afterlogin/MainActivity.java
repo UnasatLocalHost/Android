@@ -2,6 +2,7 @@ package sr.unasat.bproduct.afterlogin;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.Menu;
@@ -17,8 +18,11 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 
 
+import sr.unasat.bproduct.Account_Activity;
+import sr.unasat.bproduct.LoginActivity;
 import sr.unasat.bproduct.R;
 import sr.unasat.bproduct.fragments.PagerAdapter;
+import sr.unasat.bproduct.menu.MenuActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -75,10 +79,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if (id==R.id.action_settings) {
+
+        if (id ==R.id.action_log_out) {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+        if (id==R.id.action_account_settings) {
+            startActivity(new Intent(this, Account_Activity.class));
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
 
 }

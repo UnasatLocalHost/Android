@@ -4,22 +4,26 @@
 
 
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/action_log_out"
         android:title="Log out"
         />
 
     <item
-        android:id="@+id/action_sort"
-        android:title="Sort"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_action_sort"/>
+        android:id="@+id/action_account_settings"
+        android:title="Account Management"/>
 
-    <item
-        android:id="@+id/action_search"
-        android:icon="@drawable/ic_search"
-        android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always|collapseActionView"/>
+<!--    <item-->
+<!--        android:id="@+id/action_sort"-->
+<!--        android:title="Sort"-->
+<!--        app:showAsAction="always"-->
+<!--        android:icon="@drawable/ic_action_sort"/>-->
+
+<!--    <item-->
+<!--        android:id="@+id/action_search"-->
+<!--        android:icon="@drawable/ic_search"-->
+<!--        android:title="@string/search"-->
+<!--        app:actionViewClass="android.widget.SearchView"-->
+<!--        app:showAsAction="always|collapseActionView"/>-->
 
 
 
