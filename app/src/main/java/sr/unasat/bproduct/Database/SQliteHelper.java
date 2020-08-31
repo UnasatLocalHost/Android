@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import java.sql.Date;
 
@@ -138,6 +139,39 @@ public class SQliteHelper extends SQLiteOpenHelper {
 
 
     }
+
+    public int updateUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(USER_USERNAME,user.username);
+        values.put(USER_EMAIL, user.email);
+        values.put(USER_PASSWORD,user.password);
+
+
+        //updating row
+        return  db.update(TABLE_USERS,values,"id = ?",new String[]{String.valueOf(user.id)});
+    }
+
+    //deleting a single user
+
+    public void deleteUser(User user) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USERS,"id = ?",new String[]{String.valueOf(user.id)});
+        db.close();
+
+    }
+
+
+
+    public void deletedRecords() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_USERS,null,null);
+        db.execSQL("delete from "+TABLE_USERS);
+        db.close();
+
+    }
+
+
 
 
 }
