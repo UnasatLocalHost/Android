@@ -115,6 +115,29 @@ public class SQliteHelper extends SQLiteOpenHelper {
 
     }
 
+    public  boolean insertData(String USERNAME, String EMAIL,String PASSWORD) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_USERNAME,USERNAME);
+        contentValues.put(USER_EMAIL,EMAIL);
+        contentValues.put(USER_PASSWORD,PASSWORD);
+        long result = db.insert(TABLE_USERS,null,contentValues);
+        if (result == -1)
+            return false;
+        else
+            return true;
+
+    }
+
+    public void  deleteData(String username ) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.delete(TABLE_USERS,"username = ?",new String[] {username});
+
+
+
+    }
 
 
 }
