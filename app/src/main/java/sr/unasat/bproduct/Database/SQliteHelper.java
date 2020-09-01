@@ -23,7 +23,7 @@ public class SQliteHelper extends SQLiteOpenHelper {
     public static final String USER_USERNAME = "username";
     public static final String USER_EMAIL = "email";
     public static final String USER_PASSWORD = "password";
-    public static final String USER_LAST_LOGIN = "last_login";
+    public static final String USER_LAST_LOGIN = "lastlogin";
 
     //sql query create users table
     public static final String SQL_TABLE_USERS = " CREATE TABLE " + TABLE_USERS
@@ -31,8 +31,8 @@ public class SQliteHelper extends SQLiteOpenHelper {
             + USER_ID + " INTEGER PRIMARY KEY, "
             + USER_USERNAME + " TEXT, "
             + USER_EMAIL + " TEXT, "
-            + USER_PASSWORD + " TEXT"
-            + USER_LAST_LOGIN +"TEXT"
+            + USER_PASSWORD + " TEXT, "
+            + USER_LAST_LOGIN +" TEXT "
             + " ) ";
 
     public SQliteHelper(Context context) {
@@ -98,13 +98,16 @@ public class SQliteHelper extends SQLiteOpenHelper {
     }
 
     public boolean  updateData(String USERNAME, String EMAIL,String PASSWORD){
+
         SQLiteDatabase db = this.getWritableDatabase();
+
+
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(USER_USERNAME,USERNAME);
         contentValues.put(USER_EMAIL,EMAIL);
         contentValues.put(USER_PASSWORD,PASSWORD);
-        db.update(TABLE_USERS,contentValues,"username = ?", new String[]{USERNAME});
+        db.update(TABLE_USERS,contentValues,"id = 1 ",new String[]{(USER_ID)});
         return true;
     }
 
@@ -130,15 +133,10 @@ public class SQliteHelper extends SQLiteOpenHelper {
 
     }
 
-    public void  deleteData(String username ) {
-
-        SQLiteDatabase db = this.getWritableDatabase();
-
-        db.delete(TABLE_USERS,"username = ?",new String[] {username});
 
 
 
-    }
+
 
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -154,12 +152,8 @@ public class SQliteHelper extends SQLiteOpenHelper {
 
     //deleting a single user
 
-    public void deleteUser(User user) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_USERS,"id = ?",new String[]{String.valueOf(user.id)});
-        db.close();
 
-    }
+
 
 
 
@@ -170,6 +164,17 @@ public class SQliteHelper extends SQLiteOpenHelper {
         db.close();
 
     }
+
+
+    public void updateTime(String time, String email){
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USER_LAST_LOGIN,time);
+        String update = " UPDATE " + TABLE_USERS + " SET " + USER_LAST_LOGIN + " = '" + time + "' WHERE " + USER_EMAIL + " = '" + email + "'"  ;
+//        database.update(TABLE_USERS,contentValues,"email = " + email  , null);
+        database.execSQL(update);
+    }
+
 
 
 

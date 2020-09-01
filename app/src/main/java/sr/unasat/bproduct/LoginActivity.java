@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -57,28 +58,12 @@ public class LoginActivity extends AppCompatActivity{
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Login runner= new Login();
+                runner.execute();
+
+
+
                 //check if user input is correct
-                if (validate()) {
-                    String Email = editTextEmail.getText().toString();
-                    String Password = editTextPassword.getText().toString();
-
-                    // Authenticate user
-                    User currentUser = sQliteHelper.Authenticate(new User(null, null, Email, Password));
-
-                    // check if Authentication is successful or not
-                    if (currentUser != null) {
-                        Snackbar.make(buttonLogin, "Successful logged In", Snackbar.LENGTH_LONG).show();
-                        LoadMainActivity();
-                        //Asynce here
-                        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-                        Date date = Calendar.getInstance().getTime();
-
-
-
-                    } else {
-                        Snackbar.make(buttonLogin, "Failed to login, please try again", Snackbar.LENGTH_LONG).show();
-                    }
-                }
             }
         });
 
@@ -166,20 +151,43 @@ public class LoginActivity extends AppCompatActivity{
        Intent intent= new Intent(this, MainActivity.class);
        startActivity(intent);
     }
-private abstract class Time extends  AsyncTask {
 
 
 
+    public class Login extends  AsyncTask <String,String,String> {
+        String Email = editTextEmail.getText().toString();
+        String Password = editTextPassword.getText().toString();
+        DateFormat df = new SimpleDateFormat(" d MM yy, HH:mm");
+        String date = df.format(Calendar.getInstance().getTime());
 
-    @Override
-    protected void onPreExecute() {
+        @Override
+        protected void onPreExecute() {
+            if (validate()) {
 
-        Date currentTime = Calendar.getInstance().getTime();
+                // Authenticate user
+                User currentUser = sQliteHelper.Authenticate(new User(null, null, Email, Password));
+                // check if Authentication is successful or not
+                if (currentUser != null) {
+                    Snackbar.make(buttonLogin, "Successful logged In", Snackbar.LENGTH_LONG).show();
+                    LoadMainActivity();
 
+                } else {
+                    Snackbar.make(buttonLogin, "Failed to login, please try again", Snackbar.LENGTH_LONG).show();
+                }
+            }
+        }
+        @Override
+        protected String doInBackground(String... strings) {
+            try {
+                sQliteHelper.updateTime(date,Email);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+            return null;
+        }
 
-        super.onPreExecute();
     }
-}
 
 }
 

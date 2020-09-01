@@ -33,24 +33,24 @@ public class ChangeActivity extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.updateUser(user);
+                updateData();
             }
         });
 
     }
 
-//    public void updateData(){
-//       boolean isUpdated = db.updateData(username.getText().toString(),email.getText().toString()
-//               ,password.getText().toString());
-//
-//       if (isUpdated == true) {
-//           Toast.makeText(ChangeActivity.this,"INFO HAS BEEN CHANGED",Toast.LENGTH_LONG).show();
-//
-//       }else
-//           Toast.makeText(ChangeActivity.this,"INFO HAS NOT BEEN CHANGED",Toast.LENGTH_LONG).show();
-//    }
-//
-//
+    public void updateData(){
+       boolean isUpdated = db.updateData(username.getText().toString(),email.getText().toString()
+               ,password.getText().toString());
+
+       if (isUpdated == true) {
+           Toast.makeText(ChangeActivity.this,"INFO HAS BEEN CHANGED",Toast.LENGTH_LONG).show();
+
+       }else
+           Toast.makeText(ChangeActivity.this,"INFO HAS NOT BEEN CHANGED",Toast.LENGTH_LONG).show();
+    }
+
+
 //    public boolean insertData() {
 //      boolean isInserted =  db.insertData(username.getText().toString(),email.getText().toString()
 //                ,password.getText().toString());

@@ -18,7 +18,7 @@ import sr.unasat.bproduct.Entity.User;
 
 
 public class Account_Activity extends AppCompatActivity {
-  User user;
+
 
      Button change,delete,view;
 
@@ -65,10 +65,10 @@ public class Account_Activity extends AppCompatActivity {
         change.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   db.updateUser(user);
-//                Intent intent = new Intent(Account_Activity.this,ChangeActivity.class);
-//                startActivity(intent);
-//
+
+              Intent intent = new Intent(Account_Activity.this,ChangeActivity.class);
+                startActivity(intent);
+
             }
         });
 
