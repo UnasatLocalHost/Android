@@ -157,7 +157,7 @@ public class LoginActivity extends AppCompatActivity{
     public class Login extends  AsyncTask <String,String,String> {
         String Email = editTextEmail.getText().toString();
         String Password = editTextPassword.getText().toString();
-        DateFormat df = new SimpleDateFormat(" d MM yy, HH:mm");
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
         String date = df.format(Calendar.getInstance().getTime());
 
         @Override
